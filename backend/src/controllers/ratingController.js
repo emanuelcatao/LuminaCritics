@@ -14,7 +14,7 @@ module.exports = {
           }
           if (checkRating) {
               checkRating.rating = rating;
-              await currentRating.save();
+              await checkRating.save();
               
               return res.status(200).json({
                 message: `Avaliação editada com sucesso!`,
