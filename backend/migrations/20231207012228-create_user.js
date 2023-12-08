@@ -3,25 +3,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable
-    ('Ratings',{
+    await queryInterface.createTable('Users', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
-      movie_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+      name: {
+        type: Sequelize.STRING,
       },
-      rating: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        validate: {
-          min: 1,
-          max: 5
-        }
-      }
+      email: {
+        type: Sequelize.STRING,
+      },
+      password: {
+        type: Sequelize.STRING,
+      },
     })
     /**
      * Add altering commands here.
@@ -32,7 +28,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Ratings')
+    await queryInterface.dropTable('Users')
     /**
      * Add reverting commands here.
      *
