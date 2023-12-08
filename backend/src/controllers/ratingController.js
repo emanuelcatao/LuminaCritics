@@ -55,7 +55,7 @@ module.exports = {
             where: { movie_id: movie_id },
           });
 
-          if (!rating)
+          if (rating.legth === 0)
             return res.status(404).json({ message: "Nenhuma avaliação foi encontrada" })
     
           res.status(200).json(rating);
