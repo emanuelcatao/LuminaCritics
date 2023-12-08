@@ -12,8 +12,14 @@ module.exports = {
           if (!user) {
             return res.status(404).json({ message: "Usuário não encontrado" });
           }
-          if (checkRating)
-            return res.status(409).json({ message: "Não é possível adicionar uma nova avaliação" })
+          if (checkRating) {
+              checkRating.rating = rating;
+              await currentRating.save();
+              
+              return res.status(200).json({
+                message: `Avaliação editada com sucesso!`,
+              });
+          }
     
           await user.createRating({ movie_id, rating });
     
