@@ -7,7 +7,7 @@ module.exports = {
 
         try {
           const user = await User.findOne({ where: { id: userId } });
-          const checkRating = await Rating.findOne({ where: { userId: userId, movie_id: movie_id } });
+          const checkRating = await Rating.findOne({ where: { UserId: userId, movie_id: movie_id } });
 
           if (!user) {
             return res.status(404).json({ message: "Usuário não encontrado" });
@@ -35,7 +35,7 @@ module.exports = {
             return res.status(404).json({ message: "Usuário não encontrado" });
     
           const rating = await Rating.findOne({
-            where: { userId: user.id, movie_id: movie_id },
+            where: { UserId: user.id, movie_id: movie_id },
           });
 
           if (!rating)
@@ -69,7 +69,7 @@ module.exports = {
     
         try {
           const user = await User.findOne({ where: { id: userId } });
-          const currentRating = await Rating.findOne({ where: { userId: userId, movie_id: movie_id } });
+          const currentRating = await Rating.findOne({ where: { UserId: userId, movie_id: movie_id } });
     
           if (!user)
             return res.status(404).json({ message: "Usuário não encontrado" });
