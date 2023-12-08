@@ -34,7 +34,7 @@ module.exports = {
             return res.status(404).json({ message: "Usuário não encontrado" });
     
           const comments = await Comment.findAll({
-            where: { userId: user.id },
+            where: { UserId: user.id },
           });
     
           res.status(200).json(comments);
@@ -53,7 +53,7 @@ module.exports = {
             return res.status(404).json({ message: "Usuário não encontrado" });
     
           const comments = await Comment.findAll({
-            where: { userId: user.id, movie_id: movie_id },
+            where: { UserId: user.id, movie_id: movie_id },
           });
     
           res.status(200).json(comments);
@@ -86,7 +86,7 @@ module.exports = {
           if (!user)
             return res.status(404).json({ message: "Usuário não encontrado" });
 
-          const commentary = await Comment.findOne({ where: { id: commentId, userId: user.id } });
+          const commentary = await Comment.findOne({ where: { id: commentId, UserId: user.id } });
           if (!commentary)
             return res.status(404).json({ message: "Comentário não encontrado" });
 
@@ -108,7 +108,7 @@ module.exports = {
           if (!user)
             return res.status(404).json({ message: "Usuário não encontrado" });
 
-          const commentary = await Comment.destroy({ where: { id: commentId, userId: user.id } });
+          const commentary = await Comment.destroy({ where: { id: commentId, UserId: user.id } });
 
           if (!commentary)
             return res.status(404).json({ message: "Comentário não encontrado" });
